@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Campus Surveillance Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: #e5e7eb;
+            padding: 20px;
+        }
+        h1 {
+            color: #38bdf8;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: #020617;
+        }
+        th, td {
+            border: 1px solid #1e293b;
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background: #1e293b;
+        }
+        .TRESPASSING {
+            color: #f472b6;
+            font-weight: bold;
+        }
+        .DANGEROUS {
+            color: #ef4444;
+            font-weight: bold;
+        }
+        .status {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🛡️ Smart Campus Surveillance Dashboard</h1>
+<p class="status">Live alerts from AI system</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Camera</th>
+            <th>Event</th>
+            <th>Time</th>
+        </tr>
+    </thead>
+    <tbody id="alertTable">
+        <tr><td colspan="4">Loading...</td></tr>
+    </tbody>
+</table>
+
+<script>
+async function loadAlerts() {
+    try {
+        const response = await fetch("http://127.0.0.1:5000/alerts");
+        const data = await response.json();
+
+        const table = document.getElementById("alertTable");
+        table.innerHTML = "";
+
+        if (data.length === 0) {
+            table.innerHTML = "<tr><td colspan='4'>No alerts yet</td></tr>";
+            return;
+        }
+
+        data.forEach(row => {
+            const tr = document.createElement("tr");
+            const eventClass = row[2].includes("DANGEROUS") ? "DANGEROUS" : "TRESPASSING";
+            tr.innerHTML = `
+                <td>${row[0]}</td>
+                <td>${row[1]}</td>
+                <td class="${eventClass}">${row[2]}</td>
+                <td>${row[3]}</td>
+            `;
+            table.appendChild(tr);
+        });
+
+    } catch (error) {
+        console.error("Error loading alerts:", error);
+    }
+}
+
+// Load every 3 seconds
+setInterval(loadAlerts, 3000);
+loadAlerts();
+</script>
+
+</body>
+</html>
