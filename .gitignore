@@ -1,5 +1,19 @@
-*.pt
-*.mp4
-*.db
-evidence/
+# Python cache
 __pycache__/
+*.pyc
+
+# Database
+*.db
+
+# AI models
+*.pt
+
+# Evidence images
+evidence/
+backend/evidence/
+
+# Videos
+*.mp4
+
+# Temporary files
+*.txt
