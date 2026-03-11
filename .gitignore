@@ -15,5 +15,4 @@ backend/evidence/
 # Videos
 *.mp4
 
-# Temporary files
-*.txt
+frontend/index.html.txt

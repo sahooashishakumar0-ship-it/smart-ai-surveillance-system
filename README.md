@@ -31,9 +31,6 @@ Camera → AI Detection (YOLOv8) → Backend (Flask API) → Database → Fronte
 - YOLOv8 (Ultralytics)
 - OpenCV
 - Flask
-- HTML
-- JavaScript
-
----
+- HTML / JavaScript
 
 ## Project Structure
