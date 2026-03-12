@@ -34,6 +34,15 @@ Alert Storage & Evidence Capture
 ↓  
 Web Dashboard (Frontend)
 
+```mermaid
+flowchart TD
+A[Camera / CCTV] --> B[YOLOv8 Detection]
+B --> C[Anomaly Detection]
+C --> D[Trespassing • Loitering • Weapon Detection]
+D --> E[Flask Backend API]
+E --> F[Alert Storage + Evidence Capture]
+F --> G[Web Dashboard]
+```
 ---
 
 ## Technologies Used
