@@ -67,14 +67,14 @@ smart-ai-surveillance-system
 
 ## Demo
 
-Example detection outputs from the AI system.
+### Loitering Detection
+![Loitering Detection](demo/loitering.jpg)
 
-Screenshots of the detection system will be added here.
+### Trespassing Detection
+![Trespassing Detection](demo/trespassing.jpg)
 
-• Person detection  
-• Trespassing detection  
-• Violence detection  
-
+### Weapon Detection
+![Weapon Detection](demo/weapon.jpg)
 ---
 
 ## Future Improvements
